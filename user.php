@@ -34,31 +34,31 @@
       }
     ?>
 
-    <form class="form-container" method="post" action="inc/actions_users.php">
-      <table class="items">
-        <tr>
-          <th><label for="inputUsername" class="sr-only">Username</label></th>
-          <td><input type="username" id="inputUsername" name="username" class="form-control" placeholder="Username" required autofocus></td>
-        </tr>
-        <tr>
-          <th><label for="inputPassword" class="sr-only">Password</label></th>
-          <td><input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required></td>
-        </tr>
-        <tr>
-          <th><label for="inputPassword" class="sr-only">Confirm Password</label></th>
-          <td><input type="password" id="inputPassword" name="confirm_password" class="form-control" placeholder="Confirm Password" required></td>
-        </tr>
-      </table>
-      <?php
+  <form class="form-container" method="post" action="inc/actions_users.php">
+    <table class="items">
+      <tr>
+        <th><label for="inputUsername" class="sr-only">Username</label></th>
+        <td><input type="username" id="inputUsername" name="username" class="form-control" placeholder="Username" required autofocus></td>
+      </tr>
+      <tr>
+        <th><label for="inputPassword" class="sr-only">Password</label></th>
+        <td><input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required></td>
+      </tr>
+      <tr>
+        <th><label for="inputPassword" class="sr-only">Confirm Password</label></th>
+        <td><input type="password" id="inputPassword" name="confirm_password" class="form-control" placeholder="Confirm Password" required></td>
+      </tr>
+    </table>
+    <?php
       if (!empty($user_id)) {
         echo "<input type='hidden' name='action' value='update' />";
         echo "<input type='hidden' name='user_id' value='$user_id' />";
       } else {
         echo "<input type='hidden' name='action' value='add' />";
       }
-      ?>
-      <input class="button button--primary button--topic-php" type="submit" value="Create Account" />
-    </form>
+    ?>
+    <input class="button button--primary button--topic-php" type="submit" value="Create Account" />
+  </form>
 
   </div>
 </div>
