@@ -6,6 +6,7 @@ $userId = request()->get('user_id');
 $username = request()->get('username');
 $password = request()->get('password');
 $confirmPassword = request()->get('confirm_password');
+$hashed = password_hash($password, PASSWORD_DEFAULT);
 
 echo $action;
 echo "<br>";
@@ -30,7 +31,7 @@ switch ($action) {
 		} elseif (!empty(findUserByUsername($username))) {
 			$session->getFlashBag()->add('error', 'User already exists');
 			redirect('/user.php');
-		} elseif (createUser($username, $password)) {
+		} elseif (createUser($username, $hashed)) {
 			$session->getFlashBag()->add('success', 'New User Added');
 			redirect('/');
 		}

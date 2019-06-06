@@ -5,7 +5,7 @@
     $user_id = getUser(request()->get('id'));
   }
 
-  if (!empty($user_id)) {
+  if (empty($user_id)) {
     $pageTitle = "Register | Time Tracker";
     $page = 'register';
   } else {
