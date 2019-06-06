@@ -43,6 +43,7 @@ function findUserById($userId)
         throw $e;
     }
 }
+
 function createUser($username, $password)
 {
     global $db;
@@ -58,7 +59,8 @@ function createUser($username, $password)
         throw $e;
     }
 }
-function updatePassword($password, $userId)
+
+function updateUser($userId, $password)
 {
     global $db;
 
@@ -80,7 +82,22 @@ function updatePassword($password, $userId)
     return true;
 }
 
-function changeRole($userId, $roleId) {
+function deleteUser($userId)
+{
+	global $db;
+	
+	try {
+		$query = "DELETE FROM users WHERE (id) VALUES (:userid)";
+		$stmt = $db->prepare($query);
+		$stmt->bindParam(':userid', $userId);
+		$stmt->execute();
+	} catch (\Exception $e) {
+		throw $e;
+	}
+}
+
+function changeRole($userId, $roleId)
+{
     global $db;
 
     try {
