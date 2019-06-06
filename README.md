@@ -36,9 +36,9 @@
 
 To pass this code review with a Meets Expectations the following criteria are required:
 
-- [ ] Allow new users to register for your application. Store the user's password as a hash.
+- [x] Allow new users to register for your application. Store the user's password as a hash.
 - [ ] Add the ability for a user to login to your application
-- [ ] Password hashed properly
+- [x] Password hashed properly
 - [ ] Add the ability to log out of your application
 - [ ] Allow users to update their password
 - [ ] Assign all new tasks to the logged in user
