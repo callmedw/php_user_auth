@@ -80,18 +80,17 @@ function updatePassword($password, $userId)
     return true;
 }
 
-function changeRole($userId, $roleId)
-{
+function changeRole($userId, $roleId) {
     global $db;
 
     try {
-        $query = "UPDATE users SET role_id = :roleId WHERE id = :userId";
-        $stmt = $db->prepare($query);
-        $stmt->bindParam(':roleId', $roleId);
-        $stmt->bindParam(':userId', $userId);
-        $stmt->execute();
-        return findUserById($userId);
+    $query = "UPDATE users SET role_id = :roleId WHERE id = :userId";
+    $stmt = $db->prepare($query);
+    $stmt->bindParam(':roleId', $roleId);
+    $stmt->bindParam(':userId', $userId);
+    $stmt->execute();
+    return findUserById($userId);
     } catch (\Exception $e) {
-        throw $e;
+    throw $e;
     }
 }
