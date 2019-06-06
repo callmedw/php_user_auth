@@ -71,9 +71,6 @@
 					<li class="nav-item tasks<?php if ($page == "register") { echo " on"; } ?>">
 						<a class="nav-link" href="/user.php">Register</a>
 					</li>
-					<li class="nav-item tasks<?php if ($page == "update") { echo " on"; } ?>">
-						<a class="nav-link" href="/user.php">Update</a>
-					</li>
 				</ul>
 			</div>
 		</header>
