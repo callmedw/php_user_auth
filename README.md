@@ -38,7 +38,7 @@ To pass this code review with a Meets Expectations the following criteria are re
 
 - [x] Allow new users to register for your application. Store the user's password as a hash.
 - [x] Password hashed properly
-- [ ] Allow users to update their password
+- [x] Allow users to update their password
 - [x] Add the ability for a user to login to your application
 - [x] Add the ability to log out of your application
 - [x] Assign all new tasks to the logged in user
@@ -48,7 +48,6 @@ To pass this code review with a Meets Expectations the following criteria are re
 ## Required Technologies
 
 * [PHP](https://php.net)
-* [Slim](https://www.slimframework.com/)
 
 ## Suggested Technologies
 
@@ -58,7 +57,7 @@ To pass this code review with a Meets Expectations the following criteria are re
 
 ## How To Use
 
-To clone and run this application, you will probably want [Git](https://git-scm.com) installed on your computer. To edit this project you may want a text-editor like [Atom](https://atom.io/). To install [Slim](https://www.slimframework.com/) you will most likely want a dependency manager like [Composer](https://getcomposer.org/).
+To clone and run this application, you will probably want [Git](https://git-scm.com) installed on your computer. To edit this project you may want a text-editor like [Atom](https://atom.io/). To install packages used in this app you will most likely want a dependency manager like [Composer](https://getcomposer.org/).
 
 ```bash
 # Clone this repository
@@ -68,10 +67,13 @@ $ git clone https://github.com/callmedw/https://github.com/callmedw/php_user_aut
 $ atom https://github.com/callmedw/php_user_auth
 
 # Go to project directory root
-$ $ cd https://github.com/callmedw/php_user_auth
+$ cd https://github.com/callmedw/php_user_auth
 
 # Use composer to install packages
 $ composer install
+
+# Start MAMP localhost
+$ php -S localhost:8888 -t public index.php
 
 ```
 
