@@ -1,5 +1,6 @@
 <?php
   require 'inc/bootstrap.php';
+  isAuthorized();
 
   $pageTitle = "Task List | Time Tracker";
   $page = "tasks";

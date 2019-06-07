@@ -4,6 +4,8 @@ require_once 'inc/bootstrap.php';
 $pageTitle = "My Account | Time Tracker";
 $page = 'account';
 
+isAuthorized();
+
 include 'inc/header.php';
 ?>
 <div class="col-container page-container">
