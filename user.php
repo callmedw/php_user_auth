@@ -17,13 +17,7 @@
 <div class="col-container page-container">
   <div class="col col-70-md col-60-lg col-center">
     <h1 class="actions-header">
-      <?php
-        if (isAuthenticated()) {
-          echo "Update";
-        } else {
-          echo "Create";
-        }
-      ?>
+      <?php echo (isAuthenticated() ? "Update" : "Create"); ?>
       User
     </h1>
     <?php
