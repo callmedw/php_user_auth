@@ -8,13 +8,6 @@ $password = request()->get('password');
 $confirmPassword = request()->get('confirm_password');
 $hashed = password_hash($password, PASSWORD_DEFAULT);
 
-echo $action;
-echo "<br>";
-echo $username;
-echo "<br>";
-echo $password;
-echo "<br>";
-
 $url="../user_list.php";
 if (request()->get('filter')) {
 	$url.="?filter=".request()->get('filter');
@@ -41,13 +34,6 @@ switch ($action) {
 			$session->getFlashBag()->add('success', 'User Updated');
 		} else {
 			$session->getFlashBag()->add('error', 'Could NOT update user');
-		}
-		break;
-	case "delete":
-		if (deleteUser($username_id)) {
-			$session->getFlashBag()->add('success', 'User Deleted');
-		} else {
-			$session->getFlashBag()->add('error', 'Could NOT Delete User');
 		}
 		break;
 }
