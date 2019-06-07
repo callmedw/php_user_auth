@@ -56,24 +56,21 @@ function createUser($username, $password) {
   }
 }
 
-function updateUser($userId, $password) {
+function updateUser($userId, $password, $username) {
   global $db;
 
   try {
-    $query = 'UPDATE users SET password = :password WHERE id = :userId';
-    $stmt = $db->prepare($query);
-    $stmt->bindParam(':password', $password);
-    $stmt->bindParam(':userId', $userId);
-    $stmt->execute();
-    if ($stmt->rowCount() > 0) {
-      return true;
-    } else {
-      return false;
-    }
-  } catch (\Exception $e) {
-    throw $e;
+    findUserById($userId);
+    $statement = $db->prepare('UPDATE users SET username=:username, password=:password WHERE id=:id');
+    $statement->bindParam('username', $username);
+    $statement->bindParam('password', $password);
+    $statement->bindParam('id', $userId);
+    $statement->execute();
+  } catch (Exception $e) {
+    echo "Error!: " . $e->getMessage() . "<br />";
+    return false;
   }
-  return true;
+  return findUserById($userId);
 }
 
 function deleteUser($userId) {

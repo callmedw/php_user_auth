@@ -1,16 +1,14 @@
 <?php
   require_once 'inc/bootstrap.php';
 
-  if (request()->get('id')) {
-    $user_id = getUser(request()->get('id'));
-  }
-
-  if (empty($user_id)) {
-    $pageTitle = "Register | Time Tracker";
-    $page = 'register';
-  } else {
+  if (isAuthenticated()) {
     $pageTitle = "Update User";
     $page = 'update';
+    $user_id = $session->get('auth_user_id');
+    $username = $session->get('auth_username');
+  } else {
+    $pageTitle = "Register | Time Tracker";
+    $page = 'register';
   }
 
   include 'inc/header.php';
@@ -20,7 +18,7 @@
   <div class="col col-70-md col-60-lg col-center">
     <h1 class="actions-header">
       <?php
-        if (!empty($user_id)) {
+        if (isAuthenticated()) {
           echo "Update";
         } else {
           echo "Create";
@@ -38,7 +36,7 @@
     <table class="items">
       <tr>
         <th><label for="inputUsername" class="sr-only">Username</label></th>
-        <td><input type="username" id="inputUsername" name="username" class="form-control" placeholder="Username" required autofocus></td>
+        <td><input required autofocus type="username" id="inputUsername" name="username" class="form-control" placeholder="Username" ?> </td>
       </tr>
       <tr>
         <th><label for="inputPassword" class="sr-only">Password</label></th>
@@ -50,14 +48,18 @@
       </tr>
     </table>
     <?php
-      if (!empty($user_id)) {
+      if (isAuthenticated()) {
         echo "<input type='hidden' name='action' value='update' />";
         echo "<input type='hidden' name='user_id' value='$user_id' />";
       } else {
         echo "<input type='hidden' name='action' value='add' />";
       }
     ?>
-    <input class="button button--primary button--topic-php" type="submit" value="Create Account" />
+    <input
+      class="button button--primary button--topic-php"
+      type="submit"
+      value=<?php echo (isAuthenticated() ? "Update" : "Create"); ?>
+    />
   </form>
 
   </div>

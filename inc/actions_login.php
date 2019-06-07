@@ -12,6 +12,7 @@ if (password_verify(request()->get('password'), $user['password'])) {
   $session->set('auth_logged_in', true);
   $session->set('auth_user_id', (int) $user['id']);
   $session->set('auth_roles', (int) $user['role_id']);
+  $session->set('auth_username', $user['username']);
   $session->getFlashBag()->add('success', 'You are logged in.');
   redirect('/');
 } else {

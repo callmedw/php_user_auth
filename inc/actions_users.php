@@ -13,27 +13,31 @@ if (request()->get('filter')) {
 	$url.="?filter=".request()->get('filter');
 }
 
+if (empty($username)) {
+	$session->getFlashBag()->add('error', 'Please enter a user');
+	redirect('/user.php');
+} elseif ($password != $confirmPassword) {
+	$session->getFlashBag()->add('error', 'Passwords do NOT match');
+	redirect('/user.php');
+} elseif (!empty(findUserByUsername($username))) {
+	$session->getFlashBag()->add('error', 'User already exists');
+	redirect('/user.php');
+}
+
 switch ($action) {
 	case "add":
-		if (empty($username)) {
-			$session->getFlashBag()->add('error', 'Please enter a user');
-			redirect('/user.php');
-		} elseif ($password != $confirmPassword) {
-			$session->getFlashBag()->add('error', 'Passwords do NOT match');
-			redirect('/user.php');
-		} elseif (!empty(findUserByUsername($username))) {
-			$session->getFlashBag()->add('error', 'User already exists');
-			redirect('/user.php');
-		} elseif (createUser($username, $hashed)) {
+		if (createUser($username, $hashed)) {
 			$session->getFlashBag()->add('success', 'New User Added');
 			redirect('/');
 		}
-		break;
+	break;
 	case "update":
-		if (updateUser($userId, $password)) {
+		if (updateUser($userId, $hashed, $username)) {
 			$session->getFlashBag()->add('success', 'User Updated');
+			redirect('/inc/actions_logout.php');
 		} else {
 			$session->getFlashBag()->add('error', 'Could NOT update user');
+			redirect('/');
 		}
-		break;
+	break;
 }
