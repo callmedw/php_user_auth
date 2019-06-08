@@ -7,6 +7,8 @@ $task = request()->get('task');
 $status = request()->get('status');
 $user_id = request()->get('user_id');
 
+isAuthorized();
+
 $url="../task_list.php";
 if (request()->get('filter')) {
   $url.="?filter=".request()->get('filter');

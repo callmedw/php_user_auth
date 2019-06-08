@@ -17,16 +17,16 @@ if ($password != $confirmPassword) {
 
 switch ($action) {
 	case "add":
-	if (empty($username)) {
-		$session->getFlashBag()->add('error', 'Please enter a user');
-		redirect('/user.php');
-	} elseif (!empty(findUserByUsername($username))) {
-		$session->getFlashBag()->add('error', 'User already exists');
-		redirect('/user.php');
-	} elseif (createUser($username, $hashed)) {
-		$session->getFlashBag()->add('success', 'New User Added');
-		redirect('/');
-	}
+		if (empty($username)) {
+			$session->getFlashBag()->add('error', 'Please enter a user');
+			redirect('/user.php');
+		} elseif (!empty(findUserByUsername($username))) {
+			$session->getFlashBag()->add('error', 'User already exists');
+			redirect('/user.php');
+		} elseif (createUser($username, $hashed)) {
+			$session->getFlashBag()->add('success', 'New User Added');
+			redirect('/');
+		}
 	break;
 	case "update":
 		if (password_verify($currentPassword, $user['password'])) {
