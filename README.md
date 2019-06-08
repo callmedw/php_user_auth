@@ -42,7 +42,7 @@ To pass this code review with a Meets Expectations the following criteria are re
 - [x] Add the ability for a user to login to your application
 - [x] Add the ability to log out of your application
 - [x] Assign all new tasks to the logged in user
-- [ ] Only return tasks belonging to the logged in user
+- [x] Only return tasks belonging to the logged in user
 - [x] ONLY the home, registration, and login pages should be accessible for unauthenticated visitors. All other pages should require authentication.
 
 ## Required Technologies
