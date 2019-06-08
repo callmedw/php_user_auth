@@ -35,10 +35,11 @@ function findUserById($userId) {
     $stmt = $db->prepare($query);
     $stmt->bindParam(':userId', $userId);
     $stmt->execute();
-    return $stmt->fetch();
+    $user =  $stmt->fetch();
   } catch (\Exception $e) {
     throw $e;
   }
+  return $user;
 }
 
 function createUser($username, $password) {
@@ -56,13 +57,12 @@ function createUser($username, $password) {
   }
 }
 
-function updateUser($userId, $password, $username) {
+function updateUser($userId, $password) {
   global $db;
-
+  
   try {
     findUserById($userId);
-    $statement = $db->prepare('UPDATE users SET username=:username, password=:password WHERE id=:id');
-    $statement->bindParam('username', $username);
+    $statement = $db->prepare('UPDATE users SET password=:password WHERE id=:id');
     $statement->bindParam('password', $password);
     $statement->bindParam('id', $userId);
     $statement->execute();
@@ -99,4 +99,8 @@ function changeRole($userId, $roleId) {
   } catch (\Exception $e) {
     throw $e;
   }
+}
+
+function hashPassword($password) {
+  return password_hash($password, PASSWORD_DEFAULT);
 }

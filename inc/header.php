@@ -1,3 +1,8 @@
+<?php
+require_once 'inc/bootstrap.php';
+$user = findUserById($session->get('auth_user_id'));
+?>
+
 <html>
 	<head>
 		<title><?php echo $pageTitle; ?></title>
@@ -59,10 +64,7 @@
 							<a class="nav-link" href="task.php">Add Tasks</a>
 						</li>
 						<li class="nav-item task<?php if ($page == "account") { echo " on"; } ?>">
-							<a class="nav-link" href="/account.php">My Account</a>
-						</li>
-						<li class="nav-item tasks<?php if ($page == "update") { echo " on"; } ?>">
-							<a class="nav-link" href="/user.php">Update User</a>
+							<a class="nav-link" href="/account.php"><?php echo $user['username'] ?></a>
 						</li>
 						<li class="nav-item tasks">
 							<a class="nav-link" href="/inc/actions_logout.php">Logout</a>
